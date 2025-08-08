@@ -7,9 +7,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [MovieController::class, 'list'])->name('index');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/index', function () {
+    return view('index');
+})->middleware(['auth', 'verified'])->name('index');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -20,7 +20,7 @@ Route::middleware('auth')->group(function () {
 Route::get('/movie/{$id}', [MovieController::class, 'show'])->name('movie.show');
 
 Route::prefix('/movie')->group(function () {
-    Route::post('/create', [MovieController::class, 'create'])->name('movie.create');
+    Route::get('/create', [MovieController::class, 'create'])->name('movie.create');
     Route::post('/add', [MovieController::class, 'store'])->name('movie.store');
     Route::post('/edit', [MovieController::class, 'edit'])->name('movie.edit');
     Route::post('/update/{id}', [MovieController::class, 'update'])->name('movie.update');
