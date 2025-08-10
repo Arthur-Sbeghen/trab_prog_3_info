@@ -7,22 +7,25 @@ use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
-    public function list () {
-        return Category::all()->sortKey('name', 'asc');
+    public function list()
+    {
+        return Category::all()->sortBy('name');
     }
 
-    public function create () {
+    public function create()
+    {
         if (!auth()->user()->is_admin) {
             return redirect()->route('index')->with('error', "You can't create categories without being an admin");
         }
         return view('category.create');
     }
 
-    public function store (Request $request) {
+    public function store(Request $request)
+    {
         if (!auth()->user()->is_admin) {
             return redirect()->route('index')->with('error', "You can't create categories without being an admin");
         }
-        
+
         $data = $request->validate([]);
     }
 }

@@ -6,28 +6,31 @@
         @method('POST')
 
         <label for="title">Title</label>
-        <input type="text" name="title" id="title" required>
+        <input type="text" name="title" id="title" value="{{ old('title') }}" required>
 
         <label for="year">Year</label>
-        <input type="number" name="year" id="year" required>
+        <input type="number" name="year" id="year" value="{{ old('year') }}" required>
 
         <label for="categories">Category</label>
         <select name="categories" id="categories" required>
             <option value="">Select a category</option>
             @foreach ($categories as $category)
-                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                <option value="{{ $category->id }}" {{ old('categories') == $category->id ? 'selected' : '' }}>
+                    {{ $category->name }}
+                </option>
             @endforeach
         </select>
 
         <label for="synopsis">Synopsis</label>
-        <textarea name="synopsis" id="synopsis" required></textarea>
+        <textarea name="synopsis" id="synopsis" required>{{ old('synopsis') }}</textarea>
 
         <label for="poster">Poster</label>
-        <input type="file" accept="image/*" name="poster" id="poster" required>
+        <input type="file" accept="image/*" name="poster" id="poster" required value="{{ old('poster') }}">
         <img id="posterPreview" style="max-width: 200px; margin-top: 10px; display: none; border: 1px solid #ccc;" />
 
         <label for="url">YouTube Trailer</label>
-        <input type="url" name="trailer_link" id="url" placeholder="https://www.youtube.com/watch?v=..." required>
+        <input type="url" name="trailer_link" id="url" placeholder="https://www.youtube.com/watch?v=..."
+            value="{{ old('trailer_link') }}" required>
         <div id="youtubePreview" style="margin-top: 10px;">
         </div>
 
@@ -74,7 +77,6 @@
         function extractYoutubeID(url) {
             const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]{11}).*/;
             const match = url.match(regExp);
-            console.log(match);
             return (match && match[2].length === 11) ? match[2] : null;
         }
     </script>

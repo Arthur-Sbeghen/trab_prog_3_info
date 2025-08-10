@@ -9,12 +9,40 @@ use Illuminate\Http\Request;
 
 class MovieController extends Controller
 {
-    public function list()
+    public function list(Request $request)
     {
-        $data = Movie::all(['title', 'id', 'year', 'image']);
 
-        return view('index', ['movies' => $data]);
+        if ($request->has('clear')) {
+            return redirect()->route('index');
+        }
+
+        $query = Movie::query();
+
+        if ($request->filled('search') && in_array($request->input('search_by'), ['title', 'year'])) {
+            if ($request->input('search_by') === 'year') {
+                $query->where('year', $request->input('search'));
+            } else {
+                $query->where('title', 'like', '%' . $request->input('search') . '%');
+            }
+        }
+
+        if ($request->filled('category_id')) {
+            $query->where('category_id', $request->input('category_id'));
+        }
+
+        if ($request->filled('year_order') && in_array($request->input('year_order'), ['asc', 'desc'])) {
+            $query->orderBy('year', $request->input('year_order'));
+        } else {
+            $query->orderBy('title', 'asc');
+        }
+
+        $movies = $query->select('title', 'id', 'year', 'image')->get();
+
+        $categories = Category::all()->sortBy('name');
+
+        return view('index', compact('movies', 'categories'));
     }
+
 
     public function show($id)
     {
@@ -24,8 +52,9 @@ class MovieController extends Controller
             return redirect()->route('index')->with('error', 'Movie not found');
         }
 
+        $videoId = Movie::getIdFromUrl($movie->trailer_link);
 
-        return view('movie.show', compact('movie'));
+        return view('movie.show', compact('movie', 'videoId'));
     }
 
     public function create()
@@ -36,7 +65,7 @@ class MovieController extends Controller
 
         $categories = Category::all()->sortBy('name');
 
-        return view('movie.create', ['categories' => $categories]);
+        return view('movie.create', compact('categories'));
     }
 
     public function store(Request $request)
@@ -45,7 +74,6 @@ class MovieController extends Controller
             return redirect()->route('index')->with('error', "You can't create movies without being an admin");
         }
 
-        // Validação dos campos, incluindo imagem
         $data = $request->validate([
             'title' => 'required|string|max:255',
             'year' => 'required|integer',
@@ -88,7 +116,9 @@ class MovieController extends Controller
             return redirect()->route('index')->with('error', 'Movie not found');
         }
 
-        return view('movie.edit', ['movie' => $movie]);
+        $categories = Category::all()->sortBy('name');
+
+        return view('movie.edit', compact('movie', 'categories'));
     }
 
     public function update($id, Request $request)
@@ -97,20 +127,41 @@ class MovieController extends Controller
             return redirect()->route('index')->with('error', "You can't edit movies without being an admin");
         }
 
-        // inserir validações
-        $data = $request->validate([]);
+        $data = $request->validate([
+            'title' => 'string|max:255',
+            'year' => 'integer',
+            'categories' => 'exists:categories,id',
+            'synopsis' => 'string',
+            'poster' => 'image|mimes:jpeg,png,jpg,gif,webp|max:2048',
+            'trailer_link' => 'url',
+        ]);
 
-        try {
-            $movie = Movie::find($id);
-            if (!$movie) {
-                return redirect()->route('index')->with('error', 'Movie not found');
-            }
-            $movie->update($data);
-        } catch (Exception $error) {
-            return redirect()->route('movie.edit', ['id' => $id])->with('error', 'Failed to update movie: ' . $error->getMessage());
+        $movie = Movie::find($id);
+        if (!$movie) {
+            return redirect()->route('index')->with('error', 'Movie not found');
         }
+        if ($request->has('title')) {
+            $movie->title = $request->input('title');
+        }
+        if ($request->has('year')) {
+            $movie->year = $request->input('year');
+        }
+        if ($request->has('categories')) {
+            $movie->category_id = $request->input('categories');
+        }
+        if ($request->has('synopsis')) {
+            $movie->synopsis = $request->input('synopsis');
+        }
+        if ($request->hasFile('poster')) {
+            $movie->image = $request->file('poster')->store('posters', 'public');
+        }
+        if ($request->has('trailer_link')) {
+            $movie->trailer_link = $request->input('trailer_link');
+        }
+        $movie->save();
 
-        return redirect()->route('index')->with('success', "Movie '" . $data['name'] . "' updated successfully");
+
+        return redirect()->route('index')->with('success', "Movie '" . $data['title'] . "' updated successfully");
     }
 
     public function destroy($id)
