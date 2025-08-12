@@ -7,12 +7,14 @@
 
         <div class="input-div">
             <label for="title" class="basic-label">Title</label>
-            <input type="text" name="title" id="title" value="{{ old('title', $movie->title) }}" class="basic-input" required>
+            <input type="text" name="title" id="title" value="{{ old('title', $movie->title) }}" class="basic-input"
+                required>
         </div>
 
         <div class="input-div">
             <label for="year" class="basic-label">Year</label>
-            <input type="number" name="year" id="year" value="{{ old('year', $movie->year) }}" class="basic-input" required>
+            <input type="number" name="year" id="year" value="{{ old('year', $movie->year) }}" class="basic-input"
+                required>
         </div>
 
         <div class="input-div">
@@ -29,14 +31,17 @@
 
         <div class="input-div">
             <label for="synopsis" class="basic-label">Synopsis</label>
-            <textarea name="synopsis" id="synopsis" class="basic-input" required>{{ old('synopsis', $movie->synopsis) }}</textarea>
+            <textarea name="synopsis" id="synopsis" class="basic-input"
+                required>{{ old('synopsis', $movie->synopsis) }}</textarea>
         </div>
 
         <div class="input-div">
             <label for="poster" class="basic-label">Poster</label>
             <img src="{{ asset('storage/' . $movie->image) }}" alt="Old Image">
-            <input type="file" accept="image/*" name="poster" id="poster" value="{{ old('poster') }}" class="basic-input">
-            <img id="posterPreview" style="max-width: 200px; margin-top: 10px; display: none; border: 1px solid #ccc;" />
+            <input type="file" accept="image/*" name="poster" id="poster" value="{{ old('poster') }}"
+                class="basic-input">
+            <img id="posterPreview"
+                style="max-width: 200px; margin-top: 10px; display: none; border: 1px solid #ccc;" />
         </div>
 
         <div class="input-div">
@@ -91,5 +96,8 @@
             const match = url.match(regExp);
             return (match && match[2].length === 11) ? match[2] : null;
         }
+        @if ($alert = session('alert'))
+            showAlert(@json($alert['message']), @json($alert['type']));
+        @endif
     </script>
 </x-app-layout>

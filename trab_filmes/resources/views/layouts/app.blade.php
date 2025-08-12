@@ -40,6 +40,31 @@
 
         <!-- Page Content -->
         <main>
+            <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+            <script>
+                function showAlert(message, type) {
+                    if (message && type) {
+                        Swal.fire({
+                            title: message,
+                            icon: type,
+                            showConfirmButton: false,
+                            timer: 3000,
+                            timerProgressBar: true,
+                            toast: true,
+                            position: 'bottom-end',
+                            didOpen: (toast) => {
+                                toast.onmouseenter = Swal.stopTimer;
+                                toast.onmouseleave = Swal.resumeTimer;
+                            },
+                            iconColor: 'white',
+                            color: 'white',
+                            customClass: {
+                                popup: 'colored-toast',
+                            },
+                        });
+                    }
+                }
+            </script>
             {{ $slot }}
         </main>
     </div>

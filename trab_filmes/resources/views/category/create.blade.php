@@ -12,4 +12,9 @@
 
         <button type="submit">Submit</button>
     </form>
+    @if ($alert = session('alert'))
+        <script>
+            showAlert(@json($alert['message']), @json($alert['type']));
+        </script>
+    @endif
 </x-app-layout>

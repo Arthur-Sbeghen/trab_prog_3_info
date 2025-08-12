@@ -1,3 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.colored-toast.swal2-icon-success {
+    background-color: #7dd24c !important;
+}
+
+.colored-toast.swal2-icon-error {
+    background-color: #c75050 !important;
+}

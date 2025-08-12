@@ -4,7 +4,7 @@
     @endif
 
     <main class="categories-list">
-        @if (!empty($categories))
+        @if ($categories->isNotEmpty())
             <ul>
                 @foreach ($categories as $category)
                     <li>{{ $category->name }}
@@ -26,4 +26,9 @@
             <p>Oops! Seems like there are no categories registered</p>
         @endif
     </main>
+    @if ($alert = session('alert'))
+        <script>
+            showAlert(@json($alert['message']), @json($alert['type']));
+        </script>
+    @endif
 </x-app-layout>

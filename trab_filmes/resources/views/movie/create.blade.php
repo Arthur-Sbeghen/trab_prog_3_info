@@ -34,8 +34,10 @@
 
         <div class="input-div">
             <label for="poster" class="basic-label">Poster</label>
-            <input type="file" accept="image/*" name="poster" id="poster" required value="{{ old('poster') }}" class="basic-input">
-            <img id="posterPreview" style="max-width: 200px; margin-top: 10px; display: none; border: 1px solid #ccc;" />
+            <input type="file" accept="image/*" name="poster" id="poster" required value="{{ old('poster') }}"
+                class="basic-input">
+            <img id="posterPreview"
+                style="max-width: 200px; margin-top: 10px; display: none; border: 1px solid #ccc;" />
         </div>
 
         <div class="input-div">
@@ -90,5 +92,8 @@
             const match = url.match(regExp);
             return (match && match[2].length === 11) ? match[2] : null;
         }
+        @if ($alert = session('alert'))
+            showAlert(@json($alert['message']), @json($alert['type']));
+        @endif
     </script>
 </x-app-layout>
