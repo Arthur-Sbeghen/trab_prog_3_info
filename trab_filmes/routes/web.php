@@ -23,9 +23,8 @@ Route::prefix('/movie')->group(function () {
 
 Route::get('movie/{id}', [MovieController::class, 'show'])->name('movie.show');
 
-Route::get('/category/list', [CategoryController::class, 'list'])->name('category.list');
-
 Route::prefix('/category')->group(function () {
+    Route::get('/list', [CategoryController::class, 'list'])->name('category.list');
     Route::get('/create', [CategoryController::class, 'create'])->name('category.create');
     Route::post('/add', [CategoryController::class, 'store'])->name('category.store');
     Route::post('/edit/{id}', [CategoryController::class, 'edit'])->name('category.edit');

@@ -3,18 +3,18 @@
     @if (Auth()->user() && Auth()->user()->is_admin)
         <form action="{{ route('movie.edit', ['id' => $movie->id]) }}" method="GET">
             @csrf
-            <button type="submit"><i class="fa-solid fa-pen"></i> Edit Movie</button>
+            <button type="submit" class="edit-btn"><i class="fa-solid fa-pen"></i> Edit Movie</button>
         </form>
         <form action="{{ route('movie.destroy', ['id' => $movie->id]) }}" method="POST">
             @csrf
             @method('DELETE')
-            <button type="submit"><i class="fa-solid fa-trash-can"></i> Delete Movie</button>
+            <button type="submit" class="delete-btn"><i class="fa-solid fa-trash-can"></i> Delete Movie</button>
         </form>
     @endif
     <h1>{{ $movie->title }}</h1>
     <p><strong>Year:</strong> {{ $movie->year }}</p>
     <p><strong>Synopsis:</strong> {{ $movie->synopsis }}</p>
-    <p><strong>Category:</strong> {{ $movie->category->name }}</p>
+    <p><strong>Category:</strong> {{ $movie->category->name ?? "No category" }}</p>
     <img src="{{ asset('storage/' . $movie->image) }}" alt="Poster of {{ $movie->title }}"
         style="width: 100%; max-width: 400px;">
     <div style="max-width: 560px;">

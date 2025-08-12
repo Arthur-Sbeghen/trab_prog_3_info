@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('title');
             $table->longText('synopsis');
             $table->year('year');
-            $table->integer('category_id')->nullable();
+            $table->integer('category_id')->foreingn('categories')->onDelete('set null')->nullable();
             $table->string('image');
             $table->string('trailer_link');
             $table->timestamps();
