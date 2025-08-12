@@ -1,6 +1,6 @@
 <x-app-layout>
     @if (Auth()->user() && Auth()->user()->is_admin)
-        <a href="{{ route('category.create') }}" class="btn-add">Add Category</a>
+        <a href="{{ route('category.create') }}" class="new-link">Add Category</a>
     @endif
 
     <main class="categories-list">
