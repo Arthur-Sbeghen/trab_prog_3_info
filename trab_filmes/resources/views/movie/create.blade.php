@@ -1,6 +1,6 @@
 <x-app-layout>
     <h1>Add Movie</h1>
-    <a href="{{ route('index') }}">Back</a>
+    <a href="{{ route('index') }}" title="Back to Movies Catalog"><i class="fa-solid fa-arrow-left"></i></a>
     <form action="{{ route('movie.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('POST')
@@ -28,6 +28,11 @@
         </div>
 
         <div class="input-div">
+            <label for="duration" class="basic-label">Duration</label>
+            <input type="text" name="duration" id="duration" class="basic-input" required value="{{ old('duration') }}" placeholder="00h00">
+        </div>
+
+        <div class="input-div">
             <label for="synopsis" class="basic-label">Synopsis</label>
             <textarea name="synopsis" id="synopsis" class="basic-input" required>{{ old('synopsis') }}</textarea>
         </div>
@@ -47,7 +52,7 @@
             <div id="youtubePreview" style="margin-top: 10px;"></div>
         </div>
 
-        <button type="submit">Submit</button>
+        <button type="submit" class="submit">Submit</button>
     </form>
 
     <script>

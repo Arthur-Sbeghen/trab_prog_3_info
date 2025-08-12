@@ -3,11 +3,11 @@
 @tailwind utilities;
 
 .colored-toast.swal2-icon-success {
-    background-color: #7dd24c !important;
+    background-color: #b8e158;
 }
 
 .colored-toast.swal2-icon-error {
-    background-color: #c75050 !important;
+    background-color: #c75050;
 }
 
 *{margin: 0; padding: 0; box-sizing: border-box;}

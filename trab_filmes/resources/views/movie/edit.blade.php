@@ -1,6 +1,6 @@
 <x-app-layout>
     <h1>Editing Movie {{ $movie->title }}</h1>
-    <a href="{{ route('movie.show', ['id' => $movie->id]) }}">Back</a>
+    <a href="{{ route('movie.show', ['id' => $movie->id]) }}" title="Back to Movie overview"><i class="fa-solid fa-arrow-left"></i></a>
     <form action="{{ route('movie.update', $movie->id) }}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')
@@ -30,6 +30,11 @@
         </div>
 
         <div class="input-div">
+            <label for="duration" class="basic-label">Duration</label>
+            <input type="text" name="duration" id="duration" class="basic-input" required value="{{ old('duration', $movie->duration) }}" placeholder="00h00" }}">
+        </div>
+
+        <div class="input-div">
             <label for="synopsis" class="basic-label">Synopsis</label>
             <textarea name="synopsis" id="synopsis" class="basic-input"
                 required>{{ old('synopsis', $movie->synopsis) }}</textarea>
@@ -51,7 +56,7 @@
             <div id="youtubePreview" style="margin-top: 10px;"></div>
         </div>
 
-        <button type="submit">Save Changes</button>
+        <button type="submit" class="submit">Save Changes</button>
     </form>
 
     <script>

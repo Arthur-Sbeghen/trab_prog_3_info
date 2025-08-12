@@ -13,7 +13,7 @@
                                 @csrf
                                 <button type="submit" class="edit-btn">Edit</button>
                             </form>
-                            <form action="{{ route('category.destroy', $category->id) }}" method="post">
+                            <form action="{{ route('category.destroy', $category->id) }}" method="post" onsubmit="{ return showConfirm(event, '{{ $category->name }}', 'category') }">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="delete-btn">Delete</button>

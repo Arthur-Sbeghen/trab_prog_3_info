@@ -79,6 +79,10 @@ class CategoryController extends Controller
             return redirect()->route('category.list')->with('alert', ["type" => "error", "message" => 'Category not found']);
         }
 
+        if ($category->name == $request->input('name')) {
+            return redirect()->route('category.edit', ['id' => $id])->with('alert', ["type" => "error", "message" => "The new name can't be the same as the old one"]);
+        }
+
         if (Category::where('name', $data['name'])->exists()) {
             return redirect()->route('category.edit', ['id' => $id])->with('alert', ["type" => "error", "message" => "Category '" . $data['name'] . "' already exists"]);
         }
@@ -111,6 +115,6 @@ class CategoryController extends Controller
             return redirect()->route('category.list')->with('alert', ["type" => "error", "message" => 'Failed to delete category: ' . $error->getMessage()]);
         }
 
-        return redirect()->route('category.list')->with('alert', ["type" => "success", "message" => "Category '" . $category['name'] . "' deleted successfully"]);
+        return redirect()->route('category.list')->with('alert', ["type" => "success", "message" => "Category deleted successfully"]);
     }
 }

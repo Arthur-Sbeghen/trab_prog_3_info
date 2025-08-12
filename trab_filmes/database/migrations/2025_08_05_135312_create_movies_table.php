@@ -19,6 +19,7 @@ return new class extends Migration
             $table->integer('category_id')->foreingn('categories')->onDelete('set null')->nullable();
             $table->string('image');
             $table->string('trailer_link');
+            $table->tinyText('duration');
             $table->timestamps();
         });
     }
