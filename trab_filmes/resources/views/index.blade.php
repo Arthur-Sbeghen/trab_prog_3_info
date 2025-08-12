@@ -62,7 +62,7 @@
                                 <span style="color: #888; font-size: 0.95rem;">{{ $movie->year }}</span>
                             </div>
                             <img src="{{ asset('storage/' . $movie->image) }}" alt="Poster de {{ $movie->title }}"
-                                style="width: 100%; height: 320px; object-fit: cover; display: block;">
+                            style="min-width: 12rem; width:100%; align-self: flex-end;">
                         </a>
                     </div>
                 @endforeach

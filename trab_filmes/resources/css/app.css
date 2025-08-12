@@ -9,3 +9,49 @@
 .colored-toast.swal2-icon-error {
     background-color: #c75050 !important;
 }
+
+*{margin: 0; padding: 0; box-sizing: border-box; color: #ffff; word-break: break-all;}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    background: radial-gradient(ellipse at bottom, #02294b 10%, #131636 50%);
+}
+
+.header-nav {
+    background-color: #050826;
+}
+
+.filters{
+    display: flex;
+    flex-direction: row;
+}
+
+.container-movies{
+    display: grid;
+    overflow-y: scroll;
+    height: 65vh;
+    margin: 5rem;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    row-gap: 2rem;
+}
+
+.movie-card{
+    display: flex;
+    height: 30rem;
+    width: 18rem;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    background-color: #050826be;
+    box-shadow: 0 4px 8px #050826;
+}
+.movie-card>a{
+    height: 100%;
+    width: 100%;
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+}
