@@ -4,7 +4,6 @@
                 <div>
                     <label for="search_by">Search by</label>
                     <select name="search_by" id="search_by" required class="basic-input">
-                        <option value="" disabled {{ !request('search_by') ? 'selected' : '' }}>Select an option</option>
                         <option value="title" {{ request('search_by') == 'title' ? 'selected' : '' }}>Title</option>
                         <option value="year" {{ request('search_by') == 'year' ? 'selected' : '' }}>Year</option>
                     </select>
