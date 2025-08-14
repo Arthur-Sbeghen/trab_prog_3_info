@@ -23,6 +23,7 @@
             }
         }
     </style>
+    <link rel="icon" href="{{ asset('storage/logo/icon.png') }}" type="image/x-icon">
 </head>
 
 <body class="font-sans antialiased">
