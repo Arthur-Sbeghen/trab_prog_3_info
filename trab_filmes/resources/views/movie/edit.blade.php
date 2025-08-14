@@ -3,7 +3,6 @@
         <a href="{{ route('movie.show', ['id' => $movie->id]) }}" class="btn-type2"><i class="fa-solid fa-arrow-left"></i> Back to Movie</a>
     </div>
     <h1>Editing Movie {{ $movie->title }}</h1>
-    <a href="{{ route('movie.show', ['id' => $movie->id]) }}" title="Back to Movie overview"><i class="fa-solid fa-arrow-left"></i></a>
     <form action="{{ route('movie.update', $movie->id) }}" method="POST" enctype="multipart/form-data" class="form-edit">
         @csrf
         @method('PUT')
@@ -45,11 +44,19 @@
 
         <div class="input-div">
             <label for="poster" class="basic-label">Poster</label>
-            <img src="{{ asset('storage/' . $movie->image) }}" alt="Old Image" style="max-width: 200px;   margin-top: 1rem; display: none; border: 1px solid #ccc; align-self: center;">
             <input type="file" accept="image/*" name="poster" id="poster" value="{{ old('poster') }}"
                 class="basic-input">
-            <img id="posterPreview"
-                style="max-width: 200px; margin-top: 1rem; display: none; border: 1px solid #ccc; align-self: center;" />
+            <div style="display:flex;flex-direction:row;justify-content:space-evenly;margin-bottom:2rem">
+                <div>
+                    <p style="text-align:center;margin-top:1rem;text-weight:bold">Current Poster</p>
+                    <img src="{{ asset('storage/' . $movie->image) }}" alt="Old Image" style="width:21rem; margin-top: 1rem; align-self: center;">
+                </div>
+                <div>
+                    <p style="text-align:center;margin-top:1rem;text-weight:bold">New Poster (if selected)</p>
+                    <img id="posterPreview"
+                    style="width:21rem; margin-top: 1rem; align-self: center;" />
+                </div>
+            </div>
         </div>
 
         <div class="input-div">

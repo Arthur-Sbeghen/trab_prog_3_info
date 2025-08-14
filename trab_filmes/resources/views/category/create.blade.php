@@ -3,7 +3,6 @@
         <a href="{{ route('category.list') }}" class="btn-type2"><i class="fa-solid fa-arrow-left"></i> Back to Categories</a>
     </div>
     <h1>Add New Category</h1>
-    <a href="{{ route('category.list') }}" title="Back to Categories list"><i class="fa-solid fa-arrow-left"></i></a>
     <form action="{{ route('category.store') }}" method="POST" class="form-edit">
         @csrf
         @method('POST')
