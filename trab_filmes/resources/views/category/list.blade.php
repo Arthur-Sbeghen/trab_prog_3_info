@@ -15,7 +15,7 @@
                                 @csrf
                                 <button type="submit" class="edit-btn"><i class="fa-solid fa-pen"></i> Edit Category</button>
                             </form>
-                            <form action="{{ route('category.destroy', $category->id) }}" method="post">
+                            <form action="{{ route('category.destroy', $category->id) }}" method="post" onsubmit="{ return showConfirm(event, '{{ $category->name }}', 'category') }">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="delete-btn"><i class="fa-solid fa-trash-can"></i> Delete Category</button>

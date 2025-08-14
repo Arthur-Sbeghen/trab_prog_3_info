@@ -30,6 +30,11 @@
         </div>
 
         <div class="input-div">
+            <label for="duration" class="basic-label">Duration</label>
+            <input type="text" name="duration" id="duration" class="basic-input" required value="{{ old('duration') }}" placeholder="00h00">
+        </div>
+
+        <div class="input-div">
             <label for="synopsis" class="basic-label">Synopsis</label>
             <textarea name="synopsis" id="synopsis" class="basic-input" required>{{ old('synopsis') }}</textarea>
         </div>
@@ -49,7 +54,7 @@
             <div id="youtubePreview" style="margin-top: 1rem; align-self: center;"></div>
         </div>
 
-        <button type="submit">Submit</button>
+        <button type="submit" class="submit">Submit</button>
     </form>
 
     <script>

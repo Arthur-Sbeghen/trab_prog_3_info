@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Movie extends Model
 {
-    protected $fillable = ['title', 'year', 'synopsis', 'image', 'trailer_link', 'category_id'];
+    protected $fillable = ['title', 'year', 'synopsis', 'image', 'trailer_link', 'category_id', 'duration'];
     public function category(): BelongsTo
     {
         return $this->belongsTo(Category::class);

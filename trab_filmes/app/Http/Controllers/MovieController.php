@@ -37,7 +37,7 @@ class MovieController extends Controller
             $query->orderBy('title', 'asc');
         }
 
-        $movies = $query->select('title', 'id', 'year', 'image')->get();
+        $movies = $query->select('title', 'id', 'year', 'image')->simplePaginate(8);
 
         $categories = Category::all()->sortBy('name');
 
@@ -82,6 +82,7 @@ class MovieController extends Controller
             'synopsis' => 'required|string',
             'poster' => 'required|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
             'trailer_link' => 'required|url',
+            'duration' => 'required|string'
         ]);
 
         $imagePath = null;
@@ -97,6 +98,7 @@ class MovieController extends Controller
                 'synopsis' => $data['synopsis'],
                 'image' => $imagePath,
                 'trailer_link' => $data['trailer_link'],
+                'duration' => $data['duration']
             ]);
         } catch (Exception $error) {
             return redirect()->route('movie.create')->with('alert', ["type" => "error", "message" => 'Failed to create movie: ' . $error->getMessage()]);
@@ -135,29 +137,44 @@ class MovieController extends Controller
             'synopsis' => 'string',
             'poster' => 'image|mimes:jpeg,png,jpg,gif,webp|max:2048',
             'trailer_link' => 'url',
+            'duration' => 'string'
         ]);
 
         $movie = Movie::find($id);
+
         if (!$movie) {
             return redirect()->route('index')->with('alert', ["type" => "error", "message" => 'Movie not found']);
         }
+        
         if ($request->has('title')) {
             $movie->title = $request->input('title');
         }
+
         if ($request->has('year')) {
             $movie->year = $request->input('year');
         }
+
         if ($request->has('categories')) {
             $movie->category_id = $request->input('categories');
         }
+
         if ($request->has('synopsis')) {
             $movie->synopsis = $request->input('synopsis');
         }
+
         if ($request->hasFile('poster')) {
+            if ($movie->image && Storage::disk('public')->exists($movie->image)) {
+                Storage::disk('public')->delete($movie->image);
+            }
             $movie->image = $request->file('poster')->store('posters', 'public');
         }
+
         if ($request->has('trailer_link')) {
             $movie->trailer_link = $request->input('trailer_link');
+        }
+
+        if ($request->has('duration')) {
+            $movie->duration = $request->input('duration');
         }
 
         try {

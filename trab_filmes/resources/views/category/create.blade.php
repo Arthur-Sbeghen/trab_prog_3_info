@@ -3,7 +3,8 @@
         <a href="{{ route('category.list') }}" class="btn-type2"><i class="fa-solid fa-arrow-left"></i> Back to Categories</a>
     </div>
     <h1>Add New Category</h1>
-    <form action="{{ route('category.store') }}" method="POST" enctype="multipart/form-data" class="form-edit">
+    <a href="{{ route('category.list') }}" title="Back to Categories list"><i class="fa-solid fa-arrow-left"></i></a>
+    <form action="{{ route('category.store') }}" method="POST" class="form-edit">
         @csrf
         @method('POST')
 
@@ -12,7 +13,7 @@
             <input type="text" name="name" id="name" value="{{ old('name') }}" class="basic-input" required>
         </div>
 
-        <button type="submit">Submit</button>
+        <button type="submit" class="submit">Submit</button>
     </form>
     @if ($alert = session('alert'))
         <script>

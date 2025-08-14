@@ -63,6 +63,7 @@
                     </div>
                 @endforeach
             </div>
+            {{ $movies->links() }}
         @else
             <p>Oops! Seems like there are no movies registered</p>
         @endif

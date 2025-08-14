@@ -64,8 +64,42 @@
                         });
                     }
                 }
+                function showConfirm(e, message, type) {
+                    e.preventDefault()
+                    Swal.fire({
+                        title: "Are you sure?",
+                        text: `You won't be able to recover the "${message}" ${type}!`,
+                        icon: "warning",
+                        showCancelButton: true,
+                        confirmButtonColor: "#b8e158",
+                        cancelButtonColor: "#d33",
+                        confirmButtonText: "Yes, delete it!",
+                        theme: 'dark',
+                        }).then((result) => {
+                        if (result.isConfirmed) {
+                            e.target.submit();
+                        }
+                    });
+
+                    return false
+                }
             </script>
             {{ $slot }}
+            <script>
+                document.querySelectorAll('.submit').forEach( btn => {
+                    btn.closest('form').addEventListener('submit', function () {
+                        btn.disabled = true;
+                    })
+                })
+                document.querySelectorAll('nav').forEach(nav => {
+                    if (nav.getAttribute('role') === 'navigation') {
+                        nav.setAttribute("class", "nav-page");
+                        Array.from(nav.children).forEach(child => {
+                            child.setAttribute("class", "btn-type2");
+                        });
+                    }
+                });
+            </script>
         </main>
     </div>
 </body>

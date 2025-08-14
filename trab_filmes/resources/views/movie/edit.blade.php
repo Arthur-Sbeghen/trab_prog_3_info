@@ -3,7 +3,7 @@
         <a href="{{ route('movie.show', ['id' => $movie->id]) }}" class="btn-type2"><i class="fa-solid fa-arrow-left"></i> Back to Movie</a>
     </div>
     <h1>Editing Movie {{ $movie->title }}</h1>
-    
+    <a href="{{ route('movie.show', ['id' => $movie->id]) }}" title="Back to Movie overview"><i class="fa-solid fa-arrow-left"></i></a>
     <form action="{{ route('movie.update', $movie->id) }}" method="POST" enctype="multipart/form-data" class="form-edit">
         @csrf
         @method('PUT')
@@ -33,6 +33,11 @@
         </div>
 
         <div class="input-div">
+            <label for="duration" class="basic-label">Duration</label>
+            <input type="text" name="duration" id="duration" class="basic-input" required value="{{ old('duration', $movie->duration) }}" placeholder="00h00" }}">
+        </div>
+
+        <div class="input-div">
             <label for="synopsis" class="basic-label">Synopsis</label>
             <textarea name="synopsis" id="synopsis" class="basic-input"
                 required>{{ old('synopsis', $movie->synopsis) }}</textarea>
@@ -54,7 +59,7 @@
             <div id="youtubePreview" style="margin-top: 1rem; align-self: center;"></div>
         </div>
 
-        <button type="submit">Save Changes</button>
+        <button type="submit" class="submit">Save Changes</button>
     </form>
 
     <script>
