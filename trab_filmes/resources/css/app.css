@@ -21,6 +21,7 @@ body {
 
 .header-nav {
     background-color: #050826;
+    max-width: 100%;
 }
 
 .filters{
@@ -28,7 +29,7 @@ body {
     flex-direction: row;
     height: fit-content;
     padding: 2rem;
-    width: 100vw;
+    width: 100%;
     justify-content: space-around;
 }
 
@@ -42,7 +43,7 @@ body {
 .container-movies{
     display: grid;
     overflow-y: auto;
-    height: 68vh;
+    height: 62vh;
     margin: 2rem 5rem 2rem;
     grid-template-columns: repeat(4, 1fr);
     gap: 2rem;
@@ -85,7 +86,7 @@ span{
 ul{
     justify-self: center;
     align-self: center;
-    height: 80vh;
+    height: 74vh;
     width: 80vw;
     overflow-y: scroll;
 }
@@ -105,7 +106,7 @@ li{
 li>div{
     display: flex;
     justify-content: space-between;
-    width: 11%;
+    width: 30%;
 }
 
 img{
@@ -214,7 +215,7 @@ h1{
     background: linear-gradient(bottom, #2673b6, #050826);
 }
 
-.movie-options{
+.options{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -239,6 +240,7 @@ h1{
     background-color: #050826be;
     overflow-y: scroll;
     height: 31rem;
+    width: 100%;
 }
 .poster-img{
     width: 21rem;
@@ -258,4 +260,50 @@ p:nth-child(4){margin-bottom: 0.5rem;}
     width: 18%;
     display: flex;
     justify-content: space-between;
+}
+.input-div{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    min-height: fit-content;
+}
+.form-edit{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 90%;
+    max-height: 68vh;
+    padding: 3rem;
+    border: 2px solid #2673b6;
+    background-color: #05082698;
+    border-radius: 1rem;
+    margin-top: 0.5rem;
+    overflow-y: auto;
+    justify-self: center;
+    align-self: center;
+}
+
+.user-form{
+    display: flex;
+    flex-direction: column;
+    width: min-content;
+    text-align: left;
+    color: white;
+}
+user-options{
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: 10vh;
+    overflow-y: auto;
+    justify-self: center;
+    align-self: center;
+    color: #ffffff;
+}
+
+.profile-container{
+    height: 78vh;
+    overflow-y: auto;
 }

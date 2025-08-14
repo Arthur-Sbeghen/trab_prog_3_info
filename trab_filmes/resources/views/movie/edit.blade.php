@@ -1,7 +1,10 @@
 <x-app-layout>
+    <div class="options">
+        <a href="{{ route('movie.show', ['id' => $movie->id]) }}" class="btn-type2"><i class="fa-solid fa-arrow-left"></i> Back to Movie</a>
+    </div>
     <h1>Editing Movie {{ $movie->title }}</h1>
-    <a href="{{ route('movie.show', ['id' => $movie->id]) }}">Back</a>
-    <form action="{{ route('movie.update', $movie->id) }}" method="POST" enctype="multipart/form-data">
+    
+    <form action="{{ route('movie.update', $movie->id) }}" method="POST" enctype="multipart/form-data" class="form-edit">
         @csrf
         @method('PUT')
 
@@ -37,18 +40,18 @@
 
         <div class="input-div">
             <label for="poster" class="basic-label">Poster</label>
-            <img src="{{ asset('storage/' . $movie->image) }}" alt="Old Image">
+            <img src="{{ asset('storage/' . $movie->image) }}" alt="Old Image" style="max-width: 200px;   margin-top: 1rem; display: none; border: 1px solid #ccc; align-self: center;">
             <input type="file" accept="image/*" name="poster" id="poster" value="{{ old('poster') }}"
                 class="basic-input">
             <img id="posterPreview"
-                style="max-width: 200px; margin-top: 10px; display: none; border: 1px solid #ccc;" />
+                style="max-width: 200px; margin-top: 1rem; display: none; border: 1px solid #ccc; align-self: center;" />
         </div>
 
         <div class="input-div">
             <label for="url" class="basic-label">YouTube Trailer</label>
             <input type="url" name="trailer_link" id="url" placeholder="https://www.youtube.com/watch?v=..."
                 value="{{ old('trailer_link', $movie->trailer_link) }}" class="basic-input">
-            <div id="youtubePreview" style="margin-top: 10px;"></div>
+            <div id="youtubePreview" style="margin-top: 1rem; align-self: center;"></div>
         </div>
 
         <button type="submit">Save Changes</button>

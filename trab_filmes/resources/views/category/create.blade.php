@@ -1,7 +1,9 @@
 <x-app-layout>
+    <div class="options">
+        <a href="{{ route('category.list') }}" class="btn-type2"><i class="fa-solid fa-arrow-left"></i> Back to Categories</a>
+    </div>
     <h1>Add New Category</h1>
-    <a href="{{ route('category.list') }}">Back</a>
-    <form action="{{ route('category.store') }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('category.store') }}" method="POST" enctype="multipart/form-data" class="form-edit">
         @csrf
         @method('POST')
 

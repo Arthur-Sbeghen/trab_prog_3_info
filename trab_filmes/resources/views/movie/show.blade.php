@@ -1,16 +1,16 @@
 <x-app-layout>
-    <div class="movie-options">
-        <a href="{{ route('index') }}">Back to Movies</a>
+    <div class="options">
+        <a href="{{ route('index') }}" class="btn-type2"><i class="fa-solid fa-arrow-left"></i> Back to Movies</a>
         <div class="admin-movie-options">
             @if (Auth()->user() && Auth()->user()->is_admin)
                 <form action="{{ route('movie.edit', ['id' => $movie->id]) }}" method="GET">
                     @csrf
-                    <button type="submit"><i class="fa-solid fa-pen"></i> Edit Movie</button>
+                    <button type="submit" class="edit-btn"><i class="fa-solid fa-pen"></i> Edit Movie</button>
                 </form>
                 <form action="{{ route('movie.destroy', ['id' => $movie->id]) }}" method="POST">
                     @csrf
                     @method('DELETE')
-                    <button type="submit"><i class="fa-solid fa-trash-can"></i> Delete Movie</button>
+                    <button type="submit" class="delete-btn"><i class="fa-solid fa-trash-can"></i> Delete Movie</button>
                 </form>
             @endif
         </div>

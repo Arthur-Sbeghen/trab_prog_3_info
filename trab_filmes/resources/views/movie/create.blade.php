@@ -1,7 +1,9 @@
 <x-app-layout>
-    <h1>Add Movie</h1>
-    <a href="{{ route('index') }}">Back</a>
-    <form action="{{ route('movie.store') }}" method="POST" enctype="multipart/form-data">
+    <div class="options">
+        <a href="{{ route('index') }}" class="btn-type2"><i class="fa-solid fa-arrow-left"></i> Back to Movies</a>
+    </div>
+    <h1>Add New Movie</h1>
+    <form action="{{ route('movie.store') }}" method="POST" enctype="multipart/form-data" class="form-edit">
         @csrf
         @method('POST')
 
@@ -37,14 +39,14 @@
             <input type="file" accept="image/*" name="poster" id="poster" required value="{{ old('poster') }}"
                 class="basic-input">
             <img id="posterPreview"
-                style="max-width: 200px; margin-top: 10px; display: none; border: 1px solid #ccc;" />
+                style="max-width: 200px; margin-top: 1rem; display: none; border: 1px solid #ccc; align-self: center;" />
         </div>
 
         <div class="input-div">
             <label for="url" class="basic-label">YouTube Trailer</label>
             <input type="url" name="trailer_link" id="url" placeholder="https://www.youtube.com/watch?v=..."
                 value="{{ old('trailer_link') }}" class="basic-input" required>
-            <div id="youtubePreview" style="margin-top: 10px;"></div>
+            <div id="youtubePreview" style="margin-top: 1rem; align-self: center;"></div>
         </div>
 
         <button type="submit">Submit</button>
