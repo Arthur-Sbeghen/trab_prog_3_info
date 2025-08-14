@@ -37,7 +37,7 @@ class MovieController extends Controller
             $query->orderBy('title', 'asc');
         }
 
-        $movies = $query->select('title', 'id', 'year', 'image')->get();
+        $movies = $query->select('title', 'id', 'year', 'image')->simplePaginate(8);
 
         $categories = Category::all()->sortBy('name');
 
@@ -163,6 +163,9 @@ class MovieController extends Controller
         }
 
         if ($request->hasFile('poster')) {
+            if ($movie->image && Storage::disk('public')->exists($movie->image)) {
+                Storage::disk('public')->delete($movie->image);
+            }
             $movie->image = $request->file('poster')->store('posters', 'public');
         }
 

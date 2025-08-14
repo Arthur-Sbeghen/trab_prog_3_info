@@ -91,6 +91,14 @@
                         btn.disabled = true;
                     })
                 })
+                document.querySelectorAll('nav').forEach(nav => {
+                    if (nav.getAttribute('role') === 'navigation') {
+                        nav.setAttribute("class", "nav-page");
+                        Array.from(nav.children).forEach(child => {
+                            child.setAttribute("class", "btn-type2");
+                        });
+                    }
+                });
             </script>
         </main>
     </div>

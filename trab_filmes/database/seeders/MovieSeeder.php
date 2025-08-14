@@ -19,7 +19,7 @@ class MovieSeeder extends Seeder
             'category_id' => 1,
             'duration' => '2h7m',
             'synopsis' => "An industrialist invites some experts to visit his theme park of cloned dinosaurs. After a power failure, the creatures run loose, putting everyone's lives, including his grandchildren's, in danger.",
-            'image' => '',
+            'image' => 'posters/vTUwdbujkECnJ3QG7uYMAjeYFE7lwZ2ciJAbYTar.jpg',
             'trailer_link' => 'https://www.youtube.com/watch?v=_jKEqDKpJLw'
         ]);
         Movie::create([
@@ -28,7 +28,7 @@ class MovieSeeder extends Seeder
             'category_id' => 2,
             'duration' => '2h7m',
             'synopsis' => "Two detectives, a rookie and a veteran, hunt a serial killer who uses the seven deadly sins as his motives.",
-            'image' => '',
+            'image' => 'posters/WzEpQx1AR8hhNfwglwSC7H3OmJDgimeeH0vm3a7d.jpg',
             'trailer_link' => 'https://www.youtube.com/watch?v=KPOuJGkpblk'
         ]);
         Movie::create([
@@ -37,7 +37,7 @@ class MovieSeeder extends Seeder
             'category_id' => 3,
             'duration' => '1h55m',
             'synopsis' => "In 1936, archaeologist Indiana Jones is tasked by Army Intelligence to help locate a legendary ancient power, the Ark of Covenant, before the Nazis get it first.",
-            'image' => '',
+            'image' => 'posters/GFW4pgx2u0FLuYUbhpIKBQUtASwNil85Vt0XjzhP.webp',
             'trailer_link' => 'https://www.youtube.com/watch?v=0xQSIdSRlAk'
         ]);
         Movie::create([
@@ -46,7 +46,7 @@ class MovieSeeder extends Seeder
             'category_id' => 4,
             'duration' => '1h43m',
             'synopsis' => "An insurance salesman begins to suspect that his whole life is actually some sort of reality TV show.",
-            'image' => '',
+            'image' => 'posters/EzMx1kvPzloCpelqjDLGNR2BXmnp7wlVPDNUIgSf.jpg',
             'trailer_link' => 'https://www.youtube.com/watch?v=dlnmQbPGuls'
         ]);
         Movie::create([
@@ -55,7 +55,7 @@ class MovieSeeder extends Seeder
             'category_id' => 5,
             'duration' => '1h59m',
             'synopsis' => "When an unconfident young woman is cursed with an old body by a spiteful witch, her only chance of breaking the spell lies with a self-indulgent yet insecure young wizard and his companions in his legged, walking castle.",
-            'image' => '',
+            'image' => 'posters/89L7zayyTKgNL4c27paupwPf6ARO5C1vs2a6auPB.jpg',
             'trailer_link' => 'https://www.youtube.com/watch?v=iwROgK94zcM'
         ]);
         Movie::create([
@@ -64,7 +64,7 @@ class MovieSeeder extends Seeder
             'category_id' => 4,
             'duration' => '2h8m',
             'synopsis' => "Maverick teacher John Keating returns in 1959 to the prestigious New England boys' boarding school where he was once a star student, using poetry to embolden his pupils to new heights of self-expression.",
-            'image' => '',
+            'image' => 'posters/jmsuZ4MO4iwGkX1WzetwxLNsAzKHPfH6JpYCSAqv.jpg',
             'trailer_link' => 'https://www.youtube.com/watch?v=ye4KFyWu2do'
         ]);
         Movie::create([
@@ -73,7 +73,7 @@ class MovieSeeder extends Seeder
             'category_id' => 5,
             'duration' => '2h35m',
             'synopsis' => "Paul Atreides arrives on Arrakis after his father accepts the stewardship of the dangerous planet. However, chaos ensues after a betrayal as forces clash to control melange, a precious resource.",
-            'image' => '',
+            'image' => 'posters/i6OGhcSuvZgWztD97H0Bdr7seGQwuQNPaNYO0RQ0.jpg',
             'trailer_link' => 'https://www.youtube.com/watch?v=n9xhJrPXop4'
         ]);
         Movie::create([
@@ -82,7 +82,7 @@ class MovieSeeder extends Seeder
             'category_id' => 4,
             'duration' => '1h48m',
             'synopsis' => "When their relationship turns sour, a couple undergoes a medical procedure to have each other erased from their memories forever.",
-            'image' => '',
+            'image' => 'posters/7J3emFy9emfp34rNq70nwt224E1fPTiJVV5ekGQj.jpg',
             'trailer_link' => 'https://www.youtube.com/watch?v=07-QBnEkgXU'
         ]);
         Movie::create([
@@ -91,7 +91,7 @@ class MovieSeeder extends Seeder
             'category_id' => 5,
             'duration' => '1h30m',
             'synopsis' => "A mean lord exiles fairytale creatures to the swamp of a grumpy ogre, who must go on a quest and rescue a princess for the lord in order to get his land back.",
-            'image' => '',
+            'image' => 'posters/s7yxDoROnfsM6ZIZnWhHdUYPLvW3DdHe50Xer7pG.jpg',
             'trailer_link' => 'https://www.youtube.com/watch?v=CwXOrWvPBPk'
         ]);
         Movie::create([
@@ -100,7 +100,7 @@ class MovieSeeder extends Seeder
             'category_id' => 5,
             'duration' => '2h4m',
             'synopsis' => "A secret military project endangers Neo-Tokyo when it turns a teenage biker gang member into a rampaging psychic psychopath who can only be stopped by his best friend.",
-            'image' => '',
+            'image' => 'posters/AYUlS60TTwTr67dcB88iPb5fnP3Ac3x4NkTKmjfG.webp',
             'trailer_link' => 'https://www.youtube.com/watch?v=vvnNpjH93NU'
         ]);
     }

@@ -10,6 +10,14 @@
     background-color: #c75050;
 }
 
+.nav-page {
+    margin-top: 1rem;
+    width: 100vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
 *{margin: 0; padding: 0; box-sizing: border-box;}
 
 body {
@@ -42,7 +50,7 @@ body {
 .container-movies{
     display: grid;
     overflow-y: auto;
-    height: 68vh;
+    height: 65vh;
     margin: 2rem 5rem 2rem;
     grid-template-columns: repeat(4, 1fr);
     gap: 2rem;
