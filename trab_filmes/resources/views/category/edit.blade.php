@@ -1,7 +1,10 @@
 <x-app-layout>
+    <div class="options">
+        <a href="{{ route('category.list') }}" class="btn-type2"><i class="fa-solid fa-arrow-left"></i> Back to Categories</a>
+    </div>
     <h1>Editing Category {{ $category->name }}</h1>
     <a href="{{ route('category.list') }}" title="Back to Categories list"><i class="fa-solid fa-arrow-left"></i></a>
-    <form action="{{ route('category.update', $category->id) }}" method="POST">
+    <form action="{{ route('category.update', $category->id) }}" method="POST" class="form-edit">
         @csrf
         @method('PUT')
 

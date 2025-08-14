@@ -2,7 +2,7 @@
         <div class="filters">
             <form action="{{ route('index') }}" method="GET">
                 <div>
-                    <label for="search_by">Search by</label>
+                    <label for="search_by" class="basic-label">Search by</label>
                     <select name="search_by" id="search_by" required class="basic-input">
                         <option value="title" {{ request('search_by') == 'title' ? 'selected' : '' }}>Title</option>
                         <option value="year" {{ request('search_by') == 'year' ? 'selected' : '' }}>Year</option>
@@ -15,7 +15,7 @@
             </form>
             <form action="{{ route('index') }}" method="GET">
                 <div>
-                    <label>Year order</label>
+                    <label class="basic-label">Year order</label>
                     <button class="btn-order" type="submit" name="year_order" value="asc" style="margin-right:0.5rem;">
                         <i class="fa-solid fa-arrow-down-1-9"></i>
                     </button>
@@ -26,7 +26,7 @@
             </form>
             <form action="{{ route('index') }}" method="GET">
                 <div>
-                    <label for="category_id">Category</label>
+                    <label for="category_id" class="basic-label">Category</label>
                     <select name="category_id" id="category_id" onchange="this.form.submit()" class="basic-input">
                         <option value="" {{ !request('category_id') ? 'selected' : '' }}>All Categories</option>
                         @foreach ($categories as $category)
@@ -44,7 +44,7 @@
                 </div>
             </form>
             @if (Auth()->user() && Auth()->user()->is_admin)
-                <a href="{{ route('movie.create') }}" class="new-link">Add Movie</a>
+                <a href="{{ route('movie.create') }}" class="new-link"><i class="fa-solid fa-plus"></i> Add Movie</a>
             @endif
         </div>
 

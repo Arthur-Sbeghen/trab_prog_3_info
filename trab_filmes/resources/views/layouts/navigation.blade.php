@@ -24,7 +24,7 @@
             <div class="hidden sm:flex sm:items-center sm:ms-6">
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
-                        <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
+                        <button class="flex justify-between items-center profile-btn">
                             @if (Auth::user())
                                 <div>{{ Auth::user()->name }}</div>
                             @endif
@@ -66,13 +66,13 @@
             </div>
             @elseif (Route::has('login'))
                 <nav class="flex items-center justify-end gap-4">
-                    <div class="sm:block text-sm text-gray-500 font-medium self-center logged">
+                    <div class="sm:block text-sm text-blue-900 font-medium self-center logged">
                         You're not logged
                     </div>
 
                     <a
                         href="{{ route('login') }}"
-                        class="inline-block px-5 py-1.5 dark:text-[#EDEDEC] text-[#1b1b18] border border-transparent hover:border-[#19140035] dark:hover:border-[#3E3E3A] rounded-sm text-sm leading-normal"
+                        class="inline-block px-5 py-1.5 dark:text-[#ffffff] text-[#ffffff] border border-transparent hover:border-[#2673b6] dark:hover:border-[#2673b6] rounded-sm text-sm leading-normal"
                     >
                         Login
                     </a>
@@ -80,7 +80,7 @@
                     @if (Route::has('register'))
                         <a
                             href="{{ route('register') }}"
-                            class="inline-block px-5 py-1.5 dark:text-[#EDEDEC] border-[#19140035] hover:border-[#1915014a] border text-[#1b1b18] dark:border-[#3E3E3A] dark:hover:border-[#62605b] rounded-sm text-sm leading-normal">
+                            class="inline-block px-5 py-1.5 dark:text-[#ffffff] border-[#ffffff] hover:border-[#81c4ff] border text-[#2673b6] dark:border-[#2673b6] dark:hover:border-[#81c4ff] rounded-sm text-sm leading-normal">
                             Register
                         </a>
                     @endif
